@@ -1,0 +1,250 @@
+.about-hero {
+    min-height: 520px;
+    padding: 100px 6%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(
+            90deg,
+            #0b0b0b 0%,
+            #0b0b0b 40%,
+            rgba(11, 11, 11, 0.65) 100%
+        ),
+        url("../images/gallery7.jpg") center/cover no-repeat;
+}
+
+.about-hero-content {
+    max-width: 850px;
+}
+
+.about-hero-content h1 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 30px;
+}
+
+.about-hero-content h1 span {
+    color: #888;
+}
+
+.about-hero-content > p:last-child {
+    max-width: 500px;
+    color: #999;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.about-story {
+    padding: 130px 6%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    align-items: center;
+    background: #0b0b0b;
+}
+
+.about-story-image {
+    height: 650px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.about-story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-story-content {
+    max-width: 580px;
+}
+
+.about-story-content h2 {
+    font-size: clamp(45px, 5vw, 70px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 35px;
+}
+
+.about-story-content h2 span {
+    color: #888;
+}
+
+.about-story-content p:not(.section-label) {
+    color: #888;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-values {
+    padding: 130px 6%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 10%;
+    background: #111111;
+}
+
+.about-values-heading h2 {
+    font-size: clamp(45px, 5vw, 70px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+}
+
+.values-list {
+    border-top: 1px solid #2c2c2c;
+}
+
+.value-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 25px;
+    padding: 35px 0;
+    border-bottom: 1px solid #2c2c2c;
+}
+
+.value-item > span {
+    color: #555;
+    font-size: 11px;
+    padding-top: 5px;
+}
+
+.value-item h3 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.value-item p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.about-quote {
+    min-height: 500px;
+    padding: 100px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #0b0b0b;
+}
+
+.about-quote h2 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+}
+
+.about-quote h2 span {
+    color: #888;
+}
+
+.about-cta {
+    min-height: 500px;
+    padding: 100px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #111111;
+}
+
+.about-cta h2 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 40px;
+}
+
+.about-cta h2 span {
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        min-height: 500px;
+        padding: 80px 5%;
+        align-items: flex-end;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(11, 11, 11, 0.25) 0%,
+                rgba(11, 11, 11, 0.8) 65%,
+                #0b0b0b 100%
+            ),
+            url("../images/gallery7.jpg") center/cover no-repeat;
+    }
+
+    .about-hero-content h1 {
+        font-size: clamp(48px, 14vw, 70px);
+        letter-spacing: -3px;
+    }
+
+    .about-story {
+        padding: 80px 5%;
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .about-story-image {
+        height: 450px;
+    }
+
+    .about-story-content h2 {
+        font-size: 44px;
+        letter-spacing: -2px;
+    }
+
+    .about-story-content p:not(.section-label) {
+        font-size: 14px;
+    }
+
+    .about-values {
+        padding: 80px 5%;
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .about-values-heading h2 {
+        font-size: 44px;
+        letter-spacing: -2px;
+    }
+
+    .value-item {
+        grid-template-columns: 35px 1fr;
+        gap: 15px;
+    }
+
+    .value-item h3 {
+        font-size: 18px;
+    }
+
+    .value-item p {
+        font-size: 13px;
+    }
+
+    .about-quote {
+        min-height: 450px;
+        padding: 80px 5%;
+    }
+
+    .about-quote h2 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+
+    .about-cta {
+        min-height: 450px;
+        padding: 80px 5%;
+    }
+
+    .about-cta h2 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+}

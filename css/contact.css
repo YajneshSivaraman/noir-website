@@ -1,0 +1,331 @@
+.contact-hero {
+    min-height: 65vh;
+    padding: 100px 6%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(11, 11, 11, 0.95) 0%,
+            rgba(11, 11, 11, 0.75) 45%,
+            rgba(11, 11, 11, 0.35) 100%
+        ),
+        url("../images/gallery3.jpg") center/cover no-repeat;
+}
+
+.contact-hero-content {
+    max-width: 800px;
+}
+
+.contact-hero-content h1 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.contact-hero-content h1 span {
+    color: #999;
+}
+
+.contact-hero-content > p:last-child {
+    max-width: 500px;
+    color: #999;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        min-height: 70vh;
+        padding: 60px 5% 70px;
+        align-items: flex-end;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(11, 11, 11, 0.2) 0%,
+                rgba(11, 11, 11, 0.6) 50%,
+                #0b0b0b 100%
+            ),
+            url("../images/contact.jpg") 60% center / cover no-repeat;
+    }
+
+    .contact-hero-content h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+
+    .contact-hero-content > p:last-child {
+        font-size: 14px;
+    }
+}
+/* 
+booking section */
+
+.contact-section {
+    padding: 120px 6%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: center;
+    background: #0b0b0b;
+}
+
+.contact-info {
+    max-width: 550px;
+}
+
+.contact-info h2 {
+    font-size: clamp(45px, 5vw, 70px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+.contact-info h2 span {
+    color: #999;
+}
+
+.contact-details {
+    border-top: 1px solid #2a2a2a;
+}
+
+.contact-detail {
+    padding: 25px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.contact-detail span {
+    display: block;
+    color: #555;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.contact-detail p {
+    color: #bdbdbd;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.booking-box {
+    padding: 55px;
+    background: #151515;
+    border: 1px solid #252525;
+}
+
+.booking-box h3 {
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 0.95;
+    letter-spacing: -2px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.booking-box > p:not(.section-label):not(.booking-note) {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 35px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    padding: 16px 25px;
+    background: #ffffff;
+    color: #0b0b0b;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-3px);
+    background: #d6d6d6;
+}
+
+.whatsapp-button:active {
+    transform: translateY(0);
+}
+
+.booking-note {
+    color: #555;
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 80px 5%;
+        grid-template-columns: 1fr;
+        gap: 70px;
+    }
+
+    .contact-info h2 {
+        font-size: 48px;
+        letter-spacing: -2px;
+        margin-bottom: 45px;
+    }
+
+    .booking-box {
+        padding: 35px 25px;
+    }
+
+    .booking-box h3 {
+        font-size: 40px;
+    }
+}
+
+/* map */
+
+.contact-map {
+    padding: 0 6% 120px;
+    background: #0b0b0b;
+}
+
+.map-placeholder {
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            rgba(11, 11, 11, 0.55),
+            rgba(11, 11, 11, 0.8)
+        ),
+        url("../images/map.jpg") center/cover no-repeat;
+}
+
+.map-content {
+    text-align: center;
+    max-width: 450px;
+    padding: 40px;
+}
+
+.map-content > span {
+    display: block;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 7px;
+    margin-bottom: 20px;
+}
+
+.map-content p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.map-button {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #555;
+    padding: 14px 22px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+}
+
+.map-button:hover {
+    background: #ffffff;
+    color: #0b0b0b;
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .contact-map {
+        padding: 0 5% 80px;
+    }
+
+    .map-placeholder {
+        min-height: 420px;
+    }
+
+    .map-content {
+        padding: 30px 20px;
+    }
+
+    .map-content > span {
+        font-size: 26px;
+        letter-spacing: 5px;
+    }
+}
+
+/* contact */
+
+.contact-cta {
+    min-height: 500px;
+    padding: 100px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            rgba(11, 11, 11, 0.72),
+            rgba(11, 11, 11, 0.9)
+        ),
+        url("../images/contact-cta.jpg") center/cover no-repeat;
+}
+
+.contact-cta > div {
+    max-width: 800px;
+}
+
+.contact-cta h2 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+    font-weight: 600;
+}
+
+.contact-cta h2 span {
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .contact-cta {
+        min-height: 450px;
+        padding: 80px 5%;
+    }
+
+    .contact-cta h2 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        min-height: 500px;
+        padding: 80px 5%;
+        align-items: flex-end;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(11, 11, 11, 0.2) 0%,
+                rgba(11, 11, 11, 0.55) 40%,
+                rgba(11, 11, 11, 0.9) 75%,
+                #0b0b0b 100%
+            ),
+            url("../images/gallery3.jpg") center/cover no-repeat;
+    }
+}
