@@ -1,14 +1,34 @@
 const businessName = "NOIR Men's Grooming Studio";
-const businessPhone = "";
+const businessPhone = "+91 70105 08392";
 const businessWhatsApp = "917010508392";
-const businessAddress = "";
+const businessAddress = "24, Example Street<br>Madurai, Tamil Nadu";
 const businessInstagram = "";
+const businessHours = "Monday — Saturday<br>9:00 AM — 9:00 PM";
 
 const businessLogo = document.getElementById("businessLogo");
 
 if (businessLogo) {
     businessLogo.textContent = businessName.split(" ")[0];
 }
+const addressElement = document.getElementById("businessAddress");
+const phoneElement = document.getElementById("businessPhone");
+
+if (addressElement) {
+    addressElement.innerHTML = businessAddress;
+}
+
+if (phoneElement) {
+    phoneElement.textContent = businessPhone;
+}
+
+// business hours
+const hoursElement = document.getElementById("businessHours");
+
+if (hoursElement) {
+    hoursElement.innerHTML = businessHours;
+}
+
+// -------------------------------------------------------------------------------------
 
 const whatsappButton = document.getElementById("whatsappBooking");
 
