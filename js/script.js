@@ -1,12 +1,24 @@
+const businessName = "NOIR Men's Grooming Studio";
+const businessPhone = "";
+const businessWhatsApp = "917010508392";
+const businessAddress = "";
+const businessInstagram = "";
+
+const businessLogo = document.getElementById("businessLogo");
+
+if (businessLogo) {
+    businessLogo.textContent = businessName.split(" ")[0];
+}
+
 const whatsappButton = document.getElementById("whatsappBooking");
 
 if (whatsappButton) {
     whatsappButton.addEventListener("click", function (event) {
         event.preventDefault();
 
-        const phoneNumber = "917010508392";
+        const phoneNumber = businessWhatsApp;
 
-        const message = "Hi! I'd like to book an appointment at NOIR Men's Grooming Studio.";
+        const message = `Hi! I'd like to book an appointment at ${businessName}.`;
 
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
