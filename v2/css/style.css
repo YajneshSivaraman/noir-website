@@ -1,0 +1,920 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f4f1eb;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.page-loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.page-exit {
+    opacity: 0;
+    transform: translateY(-12px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+/* Link reset */
+a {
+    text-decoration: none;
+}
+
+/* Navigation */
+.navbar {
+    width: 100%;
+    height: 82px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f4f1eb;
+    border-bottom: 1px solid #d8d4cc;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo,
+.logo:visited {
+    color: #171717;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    transition: letter-spacing 0.4s ease;
+}
+
+.logo:hover {
+    color: #171717;
+    letter-spacing: 6px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+
+.nav-links a,
+.nav-links a:visited {
+    color: #66615a;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #171717;
+}
+
+.nav-links a:hover {
+    transform: translateY(-1px);
+}
+
+/* Navigation button */
+.nav-button,
+.nav-button:visited {
+    position: relative;
+    overflow: hidden;
+    padding: 13px 22px;
+    border: 1px solid #171717;
+    color: #171717;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.nav-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #171717;
+    transform: translateY(101%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+}
+
+.nav-button:hover {
+    color: #f4f1eb;
+    transform: translateY(-2px);
+}
+
+.nav-button:hover::before {
+    transform: translateY(0);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Scroll reveal */
+.reveal,
+.hero-content,
+.hero-image,
+.intro,
+.featured-services,
+.feature-image,
+.experience,
+.booking-cta,
+.gallery-hero-content,
+.gallery-hero-image,
+.gallery-intro,
+.gallery-feature,
+.gallery-split,
+.gallery-wide,
+.gallery-statement,
+.gallery-final,
+.gallery-closing,
+.contact-hero-content,
+.contact-hero-image,
+.contact-details,
+.contact-booking,
+.contact-location,
+.contact-closing,
+.about-hero-copy,
+.about-hero-image,
+.about-intro,
+.about-story,
+.about-values,
+.about-quote,
+.about-cta,
+.services-hero-text,
+.services-hero-image,
+.service-category,
+.services-cta {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Visible reveal */
+.reveal.visible,
+.hero-content.visible,
+.hero-image.visible,
+.intro.visible,
+.featured-services.visible,
+.feature-image.visible,
+.experience.visible,
+.booking-cta.visible,
+.gallery-hero-content.visible,
+.gallery-hero-image.visible,
+.gallery-intro.visible,
+.gallery-feature.visible,
+.gallery-split.visible,
+.gallery-wide.visible,
+.gallery-statement.visible,
+.gallery-final.visible,
+.gallery-closing.visible,
+.contact-hero-content.visible,
+.contact-hero-image.visible,
+.contact-details.visible,
+.contact-booking.visible,
+.contact-location.visible,
+.contact-closing.visible,
+.about-hero-copy.visible,
+.about-hero-image.visible,
+.about-intro.visible,
+.about-story.visible,
+.about-values.visible,
+.about-quote.visible,
+.about-cta.visible,
+.services-hero-text.visible,
+.services-hero-image.visible,
+.service-category.visible,
+.services-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Selected service rows */
+.featured-services .service-item {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featured-services.visible .service-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-services.visible .service-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.featured-services.visible .service-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.featured-services.visible .service-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+/* Editorial image treatment */
+.gallery-hero-image,
+.gallery-feature-image,
+.gallery-split-image,
+.gallery-final-image,
+.contact-hero-image,
+.contact-booking-image,
+.contact-location-map,
+.about-hero-image,
+.story-image,
+.services-hero-image,
+.feature-image {
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.gallery-wide,
+.booking-cta {
+    overflow: hidden;
+}
+
+.gallery-hero-image img,
+.gallery-feature-image img,
+.gallery-split-image img,
+.gallery-wide img,
+.gallery-final-image img,
+.contact-hero-image img,
+.contact-booking-image img,
+.contact-location-map img,
+.about-hero-image img,
+.story-image img,
+.services-hero-image img,
+.hero-image img,
+.feature-image img {
+    transition:
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s ease;
+}
+
+.gallery-hero-image:hover img,
+.gallery-feature-image:hover img,
+.gallery-split-image:hover img,
+.gallery-wide:hover img,
+.gallery-final-image:hover img,
+.contact-hero-image:hover img,
+.contact-booking-image:hover img,
+.contact-location-map:hover img,
+.about-hero-image:hover img,
+.story-image:hover img,
+.services-hero-image:hover img,
+.hero-image:hover img,
+.feature-image:hover img {
+    transform: scale(1.035);
+}
+
+/* Standard dark buttons */
+.hero-button,
+.hero-button:visited,
+.gallery-closing a,
+.gallery-closing a:visited,
+.contact-booking-content a,
+.contact-booking-content a:visited,
+.services-cta-content > a,
+.services-cta-content > a:visited,
+.about-cta a,
+.about-cta a:visited {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 1;
+    color: #f4f1eb;
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.hero-button::before,
+.gallery-closing a::before,
+.contact-booking-content a::before,
+.services-cta-content > a::before,
+.about-cta a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #8a847b;
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+}
+
+.hero-button:hover,
+.gallery-closing a:hover,
+.contact-booking-content a:hover,
+.services-cta-content > a:hover,
+.about-cta a:hover {
+    color: #f4f1eb;
+    transform: translateY(-3px);
+}
+
+.hero-button:hover::before,
+.gallery-closing a:hover::before,
+.contact-booking-content a:hover::before,
+.services-cta-content > a:hover::before,
+.about-cta a:hover::before {
+    transform: translateX(0);
+}
+
+.hero-button:active,
+.gallery-closing a:active,
+.contact-booking-content a:active,
+.services-cta-content > a:active,
+.about-cta a:active {
+    transform: translateY(0);
+}
+
+/* Home booking button */
+.booking-button,
+.booking-button:visited {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 1;
+    color: #171717;
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.booking-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #8a847b;
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+}
+
+.booking-button:hover {
+    color: #f4f1eb;
+    transform: translateY(-3px);
+}
+
+.booking-button:hover::before {
+    transform: translateX(0);
+}
+
+.booking-button:active {
+    transform: translateY(0);
+}
+
+/* Home services link */
+.services-link,
+.services-link:visited {
+    color: #171717;
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.services-link:hover {
+    color: #625d56;
+    letter-spacing: 2px;
+}
+
+/* Footer */
+.footer {
+    padding: 80px 6% 30px;
+    background: #171717;
+    color: #f4f1eb;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 8%;
+    padding-bottom: 80px;
+}
+
+.footer-logo,
+.footer-logo:visited {
+    display: inline-block;
+    color: #f4f1eb;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    margin-bottom: 15px;
+    transition: letter-spacing 0.4s ease;
+}
+
+.footer-logo:hover {
+    color: #f4f1eb;
+    letter-spacing: 7px;
+}
+
+.footer-top p {
+    color: #aaa59d;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-links a,
+.footer-links a:visited {
+    color: #aaa59d;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #f4f1eb;
+    transform: translateX(4px);
+}
+
+.footer-booking p {
+    margin-bottom: 20px;
+    max-width: 220px;
+}
+
+.footer-booking a,
+.footer-booking a:visited {
+    display: inline-block;
+    color: #f4f1eb;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #f4f1eb;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.footer-booking a:hover {
+    color: #f4f1eb;
+}
+
+.footer-bottom {
+    padding-top: 25px;
+    border-top: 1px solid #3a3a3a;
+    display: flex;
+    justify-content: space-between;
+    color: #77736d;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+    .navbar {
+        height: 68px;
+        padding: 0 5%;
+    }
+
+    .logo,
+    .logo:visited {
+        font-size: 22px;
+        letter-spacing: 4px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 28px 5% 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        background: #f4f1eb;
+        border-bottom: 1px solid #d8d4cc;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a,
+    .nav-links a:visited {
+        color: #66615a;
+        font-size: 10px;
+        letter-spacing: 1.8px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #171717;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        width: 28px;
+        height: 20px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 1px;
+        background: #171717;
+        transition:
+            transform 0.35s ease,
+            opacity 0.25s ease;
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: translateY(9.5px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: translateY(-9.5px) rotate(-45deg);
+    }
+
+    /* Mobile reveal */
+    .reveal,
+    .hero-content,
+    .hero-image,
+    .intro,
+    .featured-services,
+    .feature-image,
+    .experience,
+    .booking-cta,
+    .gallery-hero-content,
+    .gallery-hero-image,
+    .gallery-intro,
+    .gallery-feature,
+    .gallery-split,
+    .gallery-wide,
+    .gallery-statement,
+    .gallery-final,
+    .gallery-closing,
+    .contact-hero-content,
+    .contact-hero-image,
+    .contact-details,
+    .contact-booking,
+    .contact-location,
+    .contact-closing,
+    .about-hero-copy,
+    .about-hero-image,
+    .about-intro,
+    .about-story,
+    .about-values,
+    .about-quote,
+    .about-cta,
+    .services-hero-text,
+    .services-hero-image,
+    .service-category,
+    .services-cta {
+        transform: translateY(25px);
+    }
+
+    .featured-services .service-item {
+        transform: translateY(20px);
+    }
+
+    .featured-services.visible .service-item {
+        transform: translateY(0);
+    }
+
+    /* Mobile images */
+    .gallery-hero-image,
+    .gallery-feature-image,
+    .gallery-split-image,
+    .gallery-final-image,
+    .contact-hero-image,
+    .contact-booking-image,
+    .contact-location-map,
+    .about-hero-image,
+    .story-image,
+    .services-hero-image,
+    .feature-image {
+        border-radius: 2px;
+    }
+
+    /* Mobile buttons */
+    .hero-button,
+    .booking-button,
+    .gallery-closing a,
+    .contact-booking-content a,
+    .services-cta-content > a,
+    .about-cta a {
+        max-width: 100%;
+        font-size: 10px;
+        letter-spacing: 1.3px;
+    }
+
+    .hero-button:hover,
+    .booking-button:hover,
+    .gallery-closing a:hover,
+    .contact-booking-content a:hover,
+    .services-cta-content > a:hover,
+    .about-cta a:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Mobile footer */
+    .footer {
+        padding: 60px 5% 25px;
+    }
+
+    .footer-top {
+        display: block;
+        padding-bottom: 55px;
+    }
+
+    .footer-logo,
+    .footer-logo:visited {
+        font-size: 25px;
+        letter-spacing: 5px;
+    }
+
+    .footer-links {
+        margin-top: 45px;
+        gap: 16px;
+    }
+
+    .footer-booking {
+        margin-top: 45px;
+    }
+
+    .footer-booking p {
+        max-width: 260px;
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        line-height: 1.6;
+    }
+}
+
+/* Final image polish */
+.gallery-hero-image,
+.gallery-feature-image,
+.gallery-split-image,
+.gallery-final-image,
+.contact-hero-image,
+.contact-booking-image,
+.contact-location-map,
+.about-hero-image,
+.story-image,
+.services-hero-image,
+.feature-image {
+    border-radius: 6px;
+}
+
+.gallery-hero-image img,
+.gallery-feature-image img,
+.gallery-split-image img,
+.gallery-wide img,
+.gallery-final-image img,
+.contact-hero-image img,
+.contact-booking-image img,
+.contact-location-map img,
+.about-hero-image img,
+.story-image img,
+.services-hero-image img,
+.hero-image img,
+.feature-image img {
+    will-change: transform;
+}
+
+.gallery-hero-image:hover img,
+.gallery-feature-image:hover img,
+.gallery-split-image:hover img,
+.gallery-wide:hover img,
+.gallery-final-image:hover img,
+.contact-hero-image:hover img,
+.contact-booking-image:hover img,
+.contact-location-map:hover img,
+.about-hero-image:hover img,
+.story-image:hover img,
+.services-hero-image:hover img,
+.hero-image:hover img,
+.feature-image:hover img {
+    transform: scale(1.045);
+}
+
+/* Keep mobile corners subtle */
+@media (max-width: 768px) {
+    .gallery-hero-image,
+    .gallery-feature-image,
+    .gallery-split-image,
+    .gallery-final-image,
+    .contact-hero-image,
+    .contact-booking-image,
+    .contact-location-map,
+    .about-hero-image,
+    .story-image,
+    .services-hero-image,
+    .feature-image {
+        border-radius: 4px;
+    }
+}
+
+/* Fix mobile hamburger lines */
+@media (max-width: 768px) {
+    .menu-toggle {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-toggle span {
+        position: absolute;
+        left: 10px;
+        width: 22px;
+        height: 1px;
+        background: #171717;
+        display: block;
+        transform-origin: center;
+        transition:
+            transform 0.35s ease,
+            opacity 0.25s ease;
+    }
+
+    .menu-toggle span:first-child {
+        transform: translateY(-4px);
+    }
+
+    .menu-toggle span:last-child {
+        transform: translateY(4px);
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: rotate(45deg);
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: rotate(-45deg);
+    }
+}
+
+/* Frosted navbar refinement */
+.navbar {
+    background: rgba(235, 231, 223, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.12);
+    box-shadow: 0 4px 18px rgba(23, 23, 23, 0.04);
+}
+
+/* Keep mobile navbar slightly stronger */
+@media (max-width: 768px) {
+    .navbar {
+        background: rgba(235, 231, 223, 0.94);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 4px 16px rgba(23, 23, 23, 0.05);
+    }
+}
+
+/* Mobile dropdown contrast */
+@media (max-width: 768px) {
+    .nav-links {
+        background: rgba(220, 216, 208, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(23, 23, 23, 0.08);
+        border-bottom: 1px solid rgba(23, 23, 23, 0.14);
+        box-shadow: 0 10px 25px rgba(23, 23, 23, 0.08);
+    }
+}
+
+/* Global typography spacing */
+p {
+    line-height: 1.75;
+}
+
+a,
+button {
+    line-height: 1.4;
+}
+
+/* Prevent small labels from feeling cramped */
+.eyebrow,
+.about-label,
+.services-label,
+.contact-label,
+.gallery-label,
+.intro-label,
+.section-heading p,
+.experience-label,
+.contact-details-heading > p,
+.contact-location-heading > p,
+.contact-closing > p {
+    line-height: 1.5;
+}
+
+/* Global heading breathing room */
+.hero-content h1,
+.intro-content h2,
+.section-heading h2,
+.experience-left h2,
+.booking-content h2,
+.services-hero-text h1,
+.category-heading h2,
+.services-cta-heading h2,
+.about-hero-copy h1,
+.about-intro-heading h2,
+.values-heading h2,
+.about-quote h2,
+.about-cta h2,
+.contact-hero h1,
+.contact-details-heading h2,
+.contact-booking-content h2,
+.contact-location-heading h2,
+.contact-closing h2,
+.gallery-hero-content h1,
+.gallery-intro h2,
+.gallery-statement h2,
+.gallery-closing h2 {
+    line-height: 1.02;
+}
+
+/* Keep heading spacing balanced on mobile */
+@media (max-width: 768px) {
+    .hero-content h1,
+    .intro-content h2,
+    .section-heading h2,
+    .experience-left h2,
+    .booking-content h2,
+    .services-hero-text h1,
+    .category-heading h2,
+    .services-cta-heading h2,
+    .about-hero-copy h1,
+    .about-intro-heading h2,
+    .values-heading h2,
+    .about-quote h2,
+    .about-cta h2,
+    .contact-hero h1,
+    .contact-details-heading h2,
+    .contact-booking-content h2,
+    .contact-location-heading h2,
+    .contact-closing h2,
+    .gallery-hero-content h1,
+    .gallery-intro h2,
+    .gallery-statement h2,
+    .gallery-closing h2 {
+        line-height: 0.98;
+    }
+}
