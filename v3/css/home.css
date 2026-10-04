@@ -1,4 +1,12 @@
-/* Experience */
+/* =========================================================
+   NOIR V3 — HOME SECTIONS
+   Experience, philosophy, services, gallery, closing and booking
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Experience section
+   --------------------------------------------------------- */
+
 .experience-section {
     position: relative;
     min-height: 100svh;
@@ -24,7 +32,8 @@
 }
 
 .experience-main {
-    max-width: 1050px;
+    width: 100%;
+    max-width: none;
     align-self: center;
 }
 
@@ -37,18 +46,21 @@
 }
 
 .experience-main h2 {
-    max-width: 900px;
+    width: max-content;
+    max-width: none;
     margin: 0;
     font-size: clamp(70px, 11vw, 190px);
     font-weight: 500;
-    line-height: 0.88;
-    letter-spacing: -0.055em;
+    line-height: 0.94;
+    letter-spacing: 0.012em;
+    word-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .experience-main h2 span {
     display: block;
     margin-left: 10vw;
+    white-space: nowrap;
 }
 
 .experience-bottom {
@@ -73,8 +85,10 @@
     color: rgba(242, 242, 238, 0.22);
 }
 
+/* ---------------------------------------------------------
+   Experience visual
+   --------------------------------------------------------- */
 
-/* Experience visual */
 .experience-visual {
     position: relative;
     height: 90svh;
@@ -138,8 +152,10 @@
     box-shadow: 0 0 16px rgba(215, 255, 63, 0.7);
 }
 
+/* ---------------------------------------------------------
+   Philosophy / manifesto
+   --------------------------------------------------------- */
 
-/* Manifesto */
 .manifesto-section {
     position: relative;
     min-height: 120svh;
@@ -150,6 +166,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.manifesto-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(8, 9, 10, 0.08),
+            transparent 25%
+        ),
+        linear-gradient(
+            120deg,
+            transparent 40%,
+            rgba(8, 9, 10, 0.04) 50%,
+            transparent 60%
+        );
 }
 
 .manifesto-top {
@@ -165,11 +200,15 @@
 }
 
 .manifesto-word {
+    position: relative;
+    z-index: 2;
     font-size: clamp(90px, 17vw, 300px);
     font-weight: 600;
-    line-height: 0.72;
-    letter-spacing: -0.08em;
+    line-height: 0.78;
+    letter-spacing: 0.01em;
+    word-spacing: 0.06em;
     text-transform: uppercase;
+    will-change: transform;
 }
 
 .manifesto-word span {
@@ -196,8 +235,10 @@
     line-height: 1.8;
 }
 
+/* ---------------------------------------------------------
+   Services
+   --------------------------------------------------------- */
 
-/* Services */
 .services-section {
     position: relative;
     padding: 150px 7vw 170px;
@@ -255,7 +296,8 @@
     gap: 25px;
     border-bottom: 1px solid rgba(242, 242, 238, 0.16);
     cursor: pointer;
-    transition: padding 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+        padding 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-number {
@@ -269,7 +311,8 @@
     font-size: clamp(28px, 4vw, 68px);
     font-weight: 500;
     line-height: 1;
-    letter-spacing: -0.04em;
+    letter-spacing: 0.012em;
+    word-spacing: 0.045em;
     transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -303,8 +346,10 @@
     transform: translate(5px, -5px);
 }
 
+/* ---------------------------------------------------------
+   Service statement
+   --------------------------------------------------------- */
 
-/* Service statement */
 .service-statement {
     position: relative;
     min-height: 90svh;
@@ -328,12 +373,13 @@
 .service-statement h2 {
     position: relative;
     z-index: 2;
-    max-width: 1100px;
+    max-width: none;
     margin: 35px 0;
     font-size: clamp(65px, 12vw, 200px);
     font-weight: 500;
-    line-height: 0.86;
-    letter-spacing: -0.065em;
+    line-height: 0.92;
+    letter-spacing: 0.012em;
+    word-spacing: 0.06em;
     text-transform: uppercase;
 }
 
@@ -362,6 +408,7 @@
     border: 1px solid rgba(215, 255, 63, 0.2);
     border-radius: 50%;
     transform: translateY(-50%) rotate(-25deg);
+    animation: statementOrbit 18s linear infinite;
 }
 
 .statement-orbit::before {
@@ -372,7 +419,32 @@
     border-radius: 50%;
 }
 
-/* Gallery */
+.statement-orbit::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 20%;
+    left: 12%;
+    border-radius: 50%;
+    background: #d7ff3f;
+    box-shadow: 0 0 18px rgba(215, 255, 63, 0.8);
+}
+
+@keyframes statementOrbit {
+    from {
+        transform: translateY(-50%) rotate(-25deg);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(335deg);
+    }
+}
+
+/* ---------------------------------------------------------
+   Gallery
+   --------------------------------------------------------- */
+
 .gallery-section {
     position: relative;
     padding: 140px 7vw 150px;
@@ -399,8 +471,10 @@
     color: rgba(242, 242, 238, 0.3);
 }
 
+/* ---------------------------------------------------------
+   Tight editorial gallery grid
+   --------------------------------------------------------- */
 
-/* Tight editorial grid */
 .gallery-track {
     width: 100%;
     display: grid;
@@ -467,57 +541,10 @@
     color: #d7ff3f;
 }
 
+/* ---------------------------------------------------------
+   Final visual
+   --------------------------------------------------------- */
 
-/* Mobile gallery */
-@media (max-width: 768px) {
-
-    .gallery-section {
-        padding: 110px 20px 120px;
-    }
-
-    .gallery-header {
-        margin-bottom: 50px;
-    }
-
-    .gallery-track {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(4, 190px);
-        gap: 12px;
-    }
-
-    .gallery-item,
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(2),
-    .gallery-item:nth-child(3),
-    .gallery-item:nth-child(4) {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-    }
-
-    .gallery-item:nth-child(1) {
-        grid-column: 1;
-        grid-row: span 2;
-    }
-
-    .gallery-item:nth-child(2) {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .gallery-item:nth-child(3) {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .gallery-item:nth-child(4) {
-        grid-column: 1 / -1;
-        grid-row: 3 / span 2;
-    }
-
-}
-/* Final visual */
 .final-visual {
     position: relative;
     height: 100svh;
@@ -563,8 +590,9 @@
     margin: 28px 0 0;
     font-size: clamp(70px, 12vw, 200px);
     font-weight: 500;
-    line-height: 0.85;
-    letter-spacing: -0.065em;
+    line-height: 0.92;
+    letter-spacing: 0.012em;
+    word-spacing: 0.06em;
 }
 
 .final-visual-content h2 span {
@@ -572,8 +600,10 @@
     margin-left: 12vw;
 }
 
+/* ---------------------------------------------------------
+   Closing section
+   --------------------------------------------------------- */
 
-/* Closing */
 .closing-section {
     position: relative;
     min-height: 90svh;
@@ -583,9 +613,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
+}
+
+.closing-section::after {
+    content: "";
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+    right: -15vw;
+    bottom: -20vw;
+    border: 1px solid rgba(8, 9, 10, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .closing-top {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     font-family: "IBM Plex Mono", monospace;
@@ -594,6 +639,8 @@
 }
 
 .closing-main {
+    position: relative;
+    z-index: 2;
     align-self: center;
     width: 100%;
 }
@@ -609,14 +656,16 @@
     margin: 35px 0;
     font-size: clamp(65px, 11vw, 185px);
     font-weight: 500;
-    line-height: 0.86;
-    letter-spacing: -0.065em;
+    line-height: 0.92;
+    letter-spacing: 0.012em;
+    word-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .closing-main h2 span {
     display: block;
     margin-left: 15vw;
+    white-space: nowrap;
 }
 
 .closing-main p {
@@ -624,8 +673,10 @@
     color: rgba(8, 9, 10, 0.55);
 }
 
+/* ---------------------------------------------------------
+   Booking
+   --------------------------------------------------------- */
 
-/* Booking */
 .booking-section {
     position: relative;
     min-height: 100svh;
@@ -642,10 +693,34 @@
     inset: 0;
     opacity: 0.18;
     background-image:
-        linear-gradient(rgba(242, 242, 238, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(242, 242, 238, 0.05) 1px, transparent 1px);
+        linear-gradient(
+            rgba(242, 242, 238, 0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(242, 242, 238, 0.05) 1px,
+            transparent 1px
+        );
     background-size: 100px 100px;
-    mask-image: radial-gradient(circle at center, black, transparent 75%);
+    mask-image: radial-gradient(
+        circle at center,
+        black,
+        transparent 75%
+    );
+}
+
+.booking-section::after {
+    content: "";
+    position: absolute;
+    width: 45vw;
+    height: 45vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(215, 255, 63, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .booking-meta {
@@ -665,7 +740,7 @@
 
 .booking-main {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     align-self: center;
     width: 100%;
     text-align: center;
@@ -682,8 +757,9 @@
     margin: 30px 0 55px;
     font-size: clamp(80px, 14vw, 230px);
     font-weight: 500;
-    line-height: 0.82;
-    letter-spacing: -0.07em;
+    line-height: 0.9;
+    letter-spacing: 0.012em;
+    word-spacing: 0.06em;
     text-transform: uppercase;
 }
 
@@ -738,8 +814,10 @@
     gap: 8px;
 }
 
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
 
-/* Footer */
 .footer {
     min-height: 180px;
     padding: 45px 7vw;
@@ -751,11 +829,14 @@
 
 .footer-brand {
     font-size: 35px;
-    letter-spacing: -0.05em;
+    letter-spacing: 0.01em;
 }
 
 .footer-brand span {
+    font-size: 0.38em;
+    vertical-align: super;
     color: #d7ff3f;
+    letter-spacing: 0;
 }
 
 .footer-meta,
@@ -771,10 +852,11 @@
     text-align: right;
 }
 
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
 
-/* Mobile */
 @media (max-width: 768px) {
-
     .experience-section {
         min-height: 100svh;
         padding: 110px 20px 80px;
@@ -785,14 +867,22 @@
         margin-bottom: 90px;
     }
 
+    .experience-main {
+        width: 100%;
+    }
+
     .experience-main h2 {
+        width: max-content;
+        max-width: none;
         font-size: clamp(57px, 16vw, 95px);
-        line-height: 0.9;
-        letter-spacing: -0.055em;
+        line-height: 0.96;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
     }
 
     .experience-main h2 span {
         margin-left: 8vw;
+        white-space: nowrap;
     }
 
     .experience-bottom {
@@ -805,7 +895,6 @@
         margin-top: 30px;
     }
 
-
     .experience-visual {
         height: 75svh;
     }
@@ -813,7 +902,6 @@
     .experience-image-wrap {
         inset: 7% 5% 7% 10%;
     }
-
 
     .manifesto-section {
         min-height: 100svh;
@@ -829,6 +917,8 @@
     .manifesto-word {
         font-size: 22vw;
         line-height: 0.82;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
     }
 
     .manifesto-offset {
@@ -842,7 +932,6 @@
         justify-content: space-between;
         gap: 20px;
     }
-
 
     .services-section {
         padding: 110px 20px;
@@ -864,7 +953,8 @@
 
     .service-name {
         font-size: clamp(19px, 5.5vw, 35px);
-        letter-spacing: -0.035em;
+        letter-spacing: 0.006em;
+        word-spacing: 0.035em;
     }
 
     .service-price {
@@ -875,7 +965,6 @@
         font-size: 14px;
     }
 
-
     .service-statement {
         min-height: 80svh;
         padding: 100px 20px;
@@ -883,7 +972,9 @@
 
     .service-statement h2 {
         font-size: 18vw;
-        line-height: 0.88;
+        line-height: 0.92;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
     }
 
     .service-statement h2 span {
@@ -895,7 +986,6 @@
         height: 110vw;
         right: -55vw;
     }
-
 
     .gallery-section {
         padding: 110px 0;
@@ -909,6 +999,15 @@
     .gallery-track {
         gap: 22px;
         padding-left: 20px;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        display: flex;
+        align-items: flex-start;
+        overflow: visible;
+    }
+
+    .gallery-item {
+        flex-shrink: 0;
     }
 
     .gallery-item-large {
@@ -926,7 +1025,6 @@
         height: 45vh;
     }
 
-
     .final-visual {
         height: 80svh;
     }
@@ -937,8 +1035,10 @@
 
     .final-visual-content h2 {
         font-size: 17vw;
+        line-height: 0.92;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
     }
-
 
     .closing-section {
         min-height: 80svh;
@@ -947,22 +1047,31 @@
 
     .closing-main h2 {
         font-size: 16vw;
-        line-height: 0.88;
+        line-height: 0.92;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
     }
 
     .closing-main h2 span {
         margin-left: 7vw;
+        white-space: nowrap;
     }
-
 
     .booking-section {
         min-height: 90svh;
         padding: 35px 20px 25px;
     }
 
+    .booking-section::after {
+        width: 100vw;
+        height: 100vw;
+    }
+
     .booking-main h2 {
         font-size: 20vw;
-        line-height: 0.85;
+        line-height: 0.9;
+        letter-spacing: 0.008em;
+        word-spacing: 0.045em;
         margin: 25px 0 45px;
     }
 
@@ -975,7 +1084,6 @@
     .booking-bottom {
         font-size: 7px;
     }
-
 
     .footer {
         min-height: 150px;
@@ -992,13 +1100,4 @@
         grid-column: 1 / -1;
         text-align: left;
     }
-
-}
-
-/* Footer registered mark */
-.footer-brand span {
-    font-size: 0.38em;
-    vertical-align: super;
-    color: #d7ff3f;
-    letter-spacing: 0;
 }
