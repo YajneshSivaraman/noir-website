@@ -1,0 +1,685 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #08090a;
+    color: #f2f2ee;
+    font-family: "Arial", sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Typography */
+@font-face {
+    font-family: "Space Grotesk";
+    src: local("Arial");
+}
+
+@font-face {
+    font-family: "IBM Plex Mono";
+    src: local("Consolas");
+}
+
+body,
+button,
+a {
+    font-family: "Space Grotesk", Arial, sans-serif;
+}
+
+span,
+p {
+    font-family: "Space Grotesk", Arial, sans-serif;
+}
+
+/* Links and buttons */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: none;
+}
+
+/* Loading screen */
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #08090a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.loader-brand {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+}
+
+.loader-brand span {
+    color: #d7ff3f;
+    font-size: 0.3em;
+    vertical-align: top;
+    margin-left: 0.08em;
+}
+
+.loader-status {
+    margin-top: 30px;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #777a7c;
+}
+
+.loader-line {
+    width: min(240px, 55vw);
+    height: 1px;
+    margin-top: 18px;
+    background: #292b2d;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0;
+    height: 100%;
+    background: #d7ff3f;
+}
+
+.loader-percent {
+    margin-top: 10px;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 9px;
+    color: #777a7c;
+}
+
+/* Force loader to disappear after loading */
+.loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+}
+
+/* Custom cursor */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d7ff3f;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition:
+        width 0.3s ease,
+        height 0.3s ease,
+        background 0.3s ease,
+        border-radius 0.3s ease;
+}
+
+.cursor-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    color: #08090a;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.cursor.active {
+    width: 72px;
+    height: 72px;
+    background: #f2f2ee;
+    mix-blend-mode: normal;
+}
+
+.cursor.active .cursor-label {
+    opacity: 1;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+    padding: 0 42px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid rgba(242, 242, 238, 0.1);
+    background: rgba(8, 9, 10, 0.72);
+    backdrop-filter: blur(18px);
+}
+
+.nav-logo {
+    justify-self: start;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.06em;
+}
+
+.nav-logo span {
+    color: #d7ff3f;
+    font-size: 8px;
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+.nav-meta {
+    justify-self: center;
+    display: flex;
+    gap: 35px;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: #777a7c;
+}
+
+.nav-menu {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+.menu-icon {
+    display: inline-flex;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #777a7c;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.nav-menu:hover .menu-icon {
+    transform: rotate(90deg);
+    border-color: #d7ff3f;
+}
+
+/* Global technical text */
+.hero-topline,
+.hero-kicker,
+.scene-coordinate,
+.hero-description > span,
+.hero-location,
+.hero-scroll {
+    font-family: "IBM Plex Mono", Consolas, monospace;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 100svh;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background:
+        radial-gradient(
+            circle at 65% 45%,
+            rgba(215, 255, 63, 0.045),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(185, 243, 255, 0.025),
+            transparent 30%
+        );
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 0.18;
+    pointer-events: none;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+    background-size: 90px 90px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+/* Hero technical line */
+.hero-topline {
+    position: absolute;
+    top: 112px;
+    left: 42px;
+    right: 42px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: #777a7c;
+}
+
+/* Hero copy */
+.hero-copy {
+    position: absolute;
+    left: 42px;
+    bottom: 15%;
+    z-index: 5;
+}
+
+.hero-kicker {
+    margin-bottom: 28px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: #777a7c;
+}
+
+.hero-copy h1 {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(4rem, 10.5vw, 11rem);
+    font-weight: 600;
+    letter-spacing: -0.075em;
+    line-height: 0.82;
+    text-transform: uppercase;
+}
+
+.hero-copy h1 > span {
+    display: block;
+}
+
+.hero-copy h1 .registered {
+    display: inline;
+    color: #d7ff3f;
+    font-size: 0.18em;
+    vertical-align: top;
+    letter-spacing: 0;
+    margin-left: 0.08em;
+}
+
+.accent-word {
+    color: #d7ff3f;
+}
+
+/* Hero 3D scene */
+.hero-scene {
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    width: 62%;
+    height: 78%;
+    z-index: 2;
+    perspective: 1200px;
+}
+
+.scene-grid {
+    position: absolute;
+    inset: 5%;
+    opacity: 0.18;
+    background-image:
+        linear-gradient(
+            rgba(185, 243, 255, 0.15) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(185, 243, 255, 0.15) 1px,
+            transparent 1px
+        );
+    background-size: 70px 70px;
+    transform: perspective(700px) rotateX(62deg) translateY(18%);
+    transform-origin: center bottom;
+    mask-image: radial-gradient(circle, black 10%, transparent 72%);
+}
+
+/* Temporary scissor object */
+.scissors-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 330px;
+    height: 250px;
+    transform:
+        translate(-50%, -50%)
+        rotate(-18deg)
+        rotateY(-18deg)
+        rotateX(8deg);
+    filter: drop-shadow(0 35px 35px rgba(0, 0, 0, 0.65));
+    animation: scissorsFloat 5s ease-in-out infinite;
+}
+
+.scissor-ring {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    border: 18px solid #777a7c;
+    border-radius: 50%;
+    right: 12px;
+    bottom: 12px;
+    box-shadow:
+        inset 0 0 0 5px #252729,
+        0 0 0 1px #bfc2c4;
+}
+
+.scissor-body {
+    position: absolute;
+    width: 125px;
+    height: 38px;
+    right: 65px;
+    bottom: 76px;
+    transform: rotate(-42deg);
+}
+
+.scissor-body span {
+    position: absolute;
+    width: 125px;
+    height: 15px;
+    border-radius: 12px;
+    background: linear-gradient(
+        90deg,
+        #343638,
+        #d5d7d8,
+        #5a5c5e,
+        #181a1b
+    );
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.7),
+        inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.scissor-body span:first-child {
+    top: 0;
+}
+
+.scissor-body span:last-child {
+    bottom: 0;
+}
+
+.scissor-blade {
+    position: absolute;
+    width: 225px;
+    height: 24px;
+    left: 0;
+    top: 105px;
+    border-radius: 100% 12px 12px 100%;
+    transform-origin: right center;
+    background: linear-gradient(
+        90deg,
+        #141617,
+        #9da1a3,
+        #f1f2f2,
+        #484b4d,
+        #101112
+    );
+    box-shadow:
+        0 7px 12px rgba(0, 0, 0, 0.55),
+        inset 0 1px rgba(255, 255, 255, 0.65);
+}
+
+.blade-one {
+    transform: rotate(-8deg);
+}
+
+.blade-two {
+    transform: rotate(8deg);
+}
+
+@keyframes scissorsFloat {
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -18px;
+    }
+}
+
+.scene-coordinate {
+    position: absolute;
+    right: 8%;
+    bottom: 17%;
+    font-size: 7px;
+    line-height: 1.8;
+    letter-spacing: 0.12em;
+    color: #55585a;
+}
+
+/* Hero bottom */
+.hero-bottom {
+    position: absolute;
+    left: 42px;
+    right: 42px;
+    bottom: 38px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    z-index: 10;
+}
+
+.hero-description {
+    max-width: 245px;
+}
+
+.hero-description > span {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: #d7ff3f;
+}
+
+.hero-description p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #8b8e90;
+}
+
+.hero-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    color: #8b8e90;
+}
+
+.scroll-arrow {
+    color: #d7ff3f;
+    font-size: 16px;
+    animation: scrollArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollArrow {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+}
+
+.hero-location {
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 7px;
+    line-height: 1.8;
+    letter-spacing: 0.14em;
+    color: #55585a;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    .cursor {
+        display: none;
+    }
+
+    .nav {
+        height: 70px;
+        padding: 0 20px;
+        grid-template-columns: 1fr auto;
+    }
+
+    .nav-meta {
+        display: none;
+    }
+
+    .nav-logo {
+        font-size: 18px;
+    }
+
+    .nav-menu {
+        font-size: 8px;
+    }
+
+    .hero-topline {
+        top: 92px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .hero-copy {
+        left: 20px;
+        right: 20px;
+        bottom: 25%;
+    }
+
+    .hero-kicker {
+        margin-bottom: 22px;
+        font-size: 8px;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(3.3rem, 15vw, 6rem);
+        letter-spacing: -0.07em;
+        line-height: 0.84;
+    }
+
+    .hero-scene {
+        top: 13%;
+        right: -15%;
+        width: 100%;
+        height: 55%;
+        opacity: 0.9;
+    }
+
+    .scissors-placeholder {
+        transform:
+            translate(-50%, -50%)
+            scale(0.7)
+            rotate(-18deg)
+            rotateY(-18deg);
+    }
+
+    .scene-coordinate {
+        right: 15%;
+        bottom: 10%;
+    }
+
+    .hero-bottom {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .hero-description {
+        max-width: 170px;
+    }
+
+    .hero-description p {
+        font-size: 9px;
+    }
+
+    .hero-location {
+        display: none;
+    }
+
+    .hero-scroll {
+        font-size: 7px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 430px) {
+    .hero-copy {
+        bottom: 28%;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(2.9rem, 15vw, 4.5rem);
+    }
+
+    .hero-scene {
+        top: 12%;
+        right: -28%;
+    }
+
+    .hero-description {
+        max-width: 145px;
+    }
+
+    .hero-description p {
+        font-size: 8px;
+    }
+}
