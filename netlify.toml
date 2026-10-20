@@ -1,0 +1,7 @@
+
+# Publish the existing HTML, CSS, JavaScript, and image files directly.
+[build]
+  publish = "."
+
+# Optional: support client-side routes if the site uses them.
+# Static HTML pages in /v2/ and /v3/ don't need this redirect.

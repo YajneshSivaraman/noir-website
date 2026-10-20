@@ -135,13 +135,27 @@ let scrollVelocity = 0;
 let smoothVelocity = 0;
 let scrollDirection = 1;
 
-window.addEventListener(
-    "scroll",
-    () => {
-        targetScroll = window.scrollY;
-    },
-    { passive: true }
-);
+// Update scroll position and futuristic progress indicator
+window.addEventListener("scroll", () => {
+    targetScroll = window.scrollY;
+
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
+    document.documentElement.style.setProperty(
+        "--scroll-progress",
+        progress
+
+        
+    );
+
+    // Update the HUD percentage
+const hudPercent = document.querySelector(".scroll-hud-percent");
+
+if (hudPercent) {
+    hudPercent.textContent = `${Math.round(progress * 100)}%`;
+}
+});
 
 /* ---------------------------------------------------------
    Dimensional section list
@@ -1281,6 +1295,64 @@ async function initializeNoirCore() {
         );
     }
 }
+
+/* =========================================================
+   SECTION HUD — uses real document position
+   This avoids conflicts with the dimensional scroll effect.
+   ========================================================= */
+
+const hudIndex = document.querySelector(".scroll-hud-index");
+const hudName = document.querySelector(".scroll-hud-name");
+
+/* Exact visual section order of the V3 page */
+const hudSections = [
+    [".hero", "01", "INTRO"],
+    [".experience-section", "02", "EXPERIENCE"],
+    [".manifesto-section", "03", "PHILOSOPHY"],
+    [".services-section", "04", "SERVICES"],
+    [".service-statement", "05", "STATEMENT"],
+    [".gallery-section", "06", "GALLERY"],
+    [".closing-section", "07", "CLOSING"],
+    [".booking-section", "08", "BOOKING"]
+];
+
+/* Find the section based on its real document position */
+function updateSectionHUD() {
+    if (!hudIndex || !hudName) return;
+
+    /* Use the real page scroll position, not transformed visual position */
+    const scrollPosition = window.scrollY + window.innerHeight * 0.45;
+
+    let activeSection = hudSections[0];
+
+    hudSections.forEach(([selector, number, name]) => {
+        const section = document.querySelector(selector);
+
+        if (!section) return;
+
+        /* offsetTop is unaffected by our dimensional scroll transform */
+        const sectionTop = section.offsetTop;
+
+        if (scrollPosition >= sectionTop) {
+            activeSection = [selector, number, name];
+        }
+    });
+
+    /* Update HUD */
+    hudIndex.textContent = activeSection[1];
+    hudName.textContent = activeSection[2];
+}
+
+/* Update during scrolling */
+window.addEventListener("scroll", updateSectionHUD, {
+    passive: true
+});
+
+/* Update after resizing */
+window.addEventListener("resize", updateSectionHUD);
+
+/* Initial state */
+updateSectionHUD();
 
 initializeNoirCore();
 

@@ -770,3 +770,99 @@ body.page-ready .hero-bottom {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
 }
+
+/* Futuristic NOIR scroll progress indicator */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100vh;
+    z-index: 10001;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        #d7ff3f 0%,
+        #b9f3ff 100%
+    );
+
+    /* JavaScript will control how much of the bar is visible */
+    transform-origin: top;
+    transform: scaleY(var(--scroll-progress));
+    box-shadow: 0 0 12px rgba(215, 255, 63, 0.35);
+}
+
+/* Keep the indicator subtle on mobile */
+@media (max-width: 768px) {
+    body::after {
+        width: 2px;
+    }
+}
+
+/* Futuristic section HUD */
+.scroll-hud {
+    position: fixed;
+    right: 22px;
+    bottom: 24px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "IBM Plex Mono", Consolas, monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: #777a7c;
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+/* Current section number */
+.scroll-hud-index {
+    color: #f2f2ee;
+}
+
+/* Current section name */
+.scroll-hud-name {
+    color: #777a7c;
+    min-width: 72px;
+}
+
+/* Progress line */
+.scroll-hud-line {
+    width: 34px;
+    height: 1px;
+    background: #d7ff3f;
+    transform-origin: left;
+    transform: scaleX(var(--scroll-progress));
+}
+
+/* Scroll percentage */
+.scroll-hud-percent {
+    color: #d7ff3f;
+}
+
+@media (max-width: 768px) {
+    .scroll-hud {
+        right: 12px;
+        bottom: 14px;
+        font-size: 7px;
+    }
+
+    .scroll-hud-name {
+        min-width: 58px;
+    }
+
+    .scroll-hud-line {
+        width: 22px;
+    }
+}
+
+/* Hide the native browser scrollbar */
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
